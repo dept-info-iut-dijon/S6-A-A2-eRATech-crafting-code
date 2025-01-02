@@ -7,17 +7,17 @@ In pairs, deep dive into the workshop topic - 5':
 
 Group sharing - 5'
 
-![Web Hunt](img/hunt.png)
+![Web Hunt](img/hunt.webp)
 
 ## Concepts
-[![Pair Programming explained](img/a-day-of-mob-programming.png)](https://youtu.be/dVqUcNKVbYg)
+[![Pair Programming explained](img/a-day-of-mob-programming.webp)](https://youtu.be/dVqUcNKVbYg)
 
 - What did you see?
 - What do you think about it?
 - What about the roles?
 - What about meetings?
 
-![All the brilliant minds](img/brilliant-minds.png)
+![All the brilliant minds](img/brilliant-minds.webp)
 
 > No delays, a real flow
 
@@ -36,64 +36,13 @@ Group sharing - 5'
     - Spending much less time in `code reviews` later on
 - On-board new joiners on your team standards
 
-![Work effectively with mob programming](img/working-effectively-with-pair-mob-programming.png)
+![Work effectively with mob programming](img/working-effectively-with-pair-mob-programming.webp)
 
-## Concrete Practice - Crappy some code
-`The secret art of making yourself indispensable by writing crappy code !!!`
-
+## Concrete Practice - Yatzy
 ### Kata
-In mob:
-- Choose a code in a language you want to work with (`C#`, `java`, `scala`)
-- Your objective : Apply CDD to make the code so crappy that other people won't be able to understand it
-  - Follow the golden rules described below
 
-![Crappy-Driven-Development](img/crappy-driven-development.png)
+![mob roles](img/mob-roles.webp)
 
-- Make it in Baby steps (crappy 1 thing at a time)
-- You have `80 minutes` to make as many cycles as possible :
-  - Be creative
-  - The more brainfuck it is the better
-  - Tests are green before and at the end of your refactoring
-
-### Mob roles
-Use [mobtime](https://mobti.me/) and configure below roles :
-* Turn Duration : 5 minutes
-* Create the 4 roles presented below
-
-![mob config](img/mob-config.png)
-
-#### Driver
-![driver](img/driver.png)
-
-- Write the code according to the navigator's specification
-- Listen intently to the navigators instructions
-- Ask questions wherever there is a lack of clarity
-
-#### Navigator
-![navigator](img/navigator.png)
-
-- Dictates the code that is to be written - the 'what'
-- Clearly communicates what code to write
-- Explains 'why' they have chosen the particular solution to this problem
-- Check for syntax / type errors as the Driver drives
-
-#### Scribe
-![scribe](img/scribe.png)
-
-- Write down the goals of each cycle in mobtime or other
-- Explain why it has been decided
-- For each stuff learned in the mob, write it as well
-
-![goals examples](img/example.png)
-
-#### Crappier
-![crappier](img/crappier.png)
-
-- Anticipate what can be crappier
-- Write down ideas that emerge in his/he minds and other ideas as well
-
-### Crappy ideas
-If at one point you struggle to find crappy ideas here is a cheat sheet of [crappy ideas](files/crappy-ideas.pdf).
 
 ### Review
 At the end, each mob presents the new version of the production code
