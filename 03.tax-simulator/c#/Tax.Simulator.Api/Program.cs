@@ -34,8 +34,7 @@ app.MapGet("/api/tax/calculate",
                 return Results.BadRequest(ex.Message);
             }
         })
-    .WithName("CalculateTax")
-    .WithOpenApi();
+    .WithName("CalculateTax");
 
 await app.RunAsync();
 
