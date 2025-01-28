@@ -2,9 +2,7 @@
 ## Pitch
 > Apprendre en faisant, coder en conscience !
 
-🚀 **Craft Code : Apprendre en faisant, coder en conscience !** 🛠️  
-
-Tu sais coder, mais **sais-tu vraiment bien coder** ? Concevoir avec intention, refactorer intelligemment, tester avec confiance, et surtout, **travailler efficacement en équipe** ?  
+Tu sais coder, mais **sais-tu coder du code propre** ? Concevoir avec intention, refactorer intelligemment, tester avec confiance, et surtout, **travailler efficacement en équipe** ?  
 
 Ici, **on apprend en faisant** ! À travers des **katas de code**, on va expérimenter, itérer et affûter nos pratiques pour devenir de meilleurs artisans du logiciel.
 
