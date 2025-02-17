@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Yatzy.Test
+namespace Yatzy.Tests
 {
     public class YatzyShould
     {
