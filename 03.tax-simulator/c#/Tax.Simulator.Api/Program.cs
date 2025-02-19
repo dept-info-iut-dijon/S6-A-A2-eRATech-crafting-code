@@ -1,7 +1,7 @@
-using Tax.Simulator;
 using Tax.Simulator.Api;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -15,27 +15,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
-
-app.MapGet("/api/tax/calculate",
-        (string situationFamiliale, decimal salaireMensuel, decimal salaireMensuelConjoint, int nombreEnfants) =>
-        {
-            try
-            {
-                return Results.Ok(
-                    Simulateur.CalculerImpotsAnnuel(
-                        situationFamiliale,
-                        salaireMensuel,
-                        salaireMensuelConjoint,
-                        nombreEnfants)
-                );
-            }
-            catch (ArgumentException ex)
-            {
-                return Results.BadRequest(ex.Message);
-            }
-        })
-    .WithName("CalculateTax");
-
+app.MapControllers();
 await app.RunAsync();
 
 public partial class Program;
