@@ -13,8 +13,8 @@ namespace Tax.Simulator.Entities
     {
         private SituationsFamiliales situationFamiliale;
         private decimal salaireMensuel;
+        private decimal salaireConjoint;
         private int nbEnfants;
-        private Personne conjoint;
 
         /// <summary>
         /// Obtient la situation familiale de la personne.
@@ -29,7 +29,7 @@ namespace Tax.Simulator.Entities
         /// <summary>
         /// Obtient le salaire mensuel du conjoint de la personne.
         /// </summary>
-        public decimal SalaireConjoint => this.conjoint.SalaireMensuel;
+        public decimal SalaireConjoint => this.salaireConjoint;
 
         /// <summary>
         /// Obtient le nombre d'enfants de la personne.
@@ -39,16 +39,16 @@ namespace Tax.Simulator.Entities
         /// <summary>
         /// Initialise une nouvelle instance de la classe <see cref="Personne"/>.
         /// </summary>
-        /// <param name="situation">Situation familialle de la personne.</param>
+        /// <param name="situationFamiliale">Situation familialle de la personne.</param>
         /// <param name="salaireMensuel">Salaire mensuel de la personne.</param>
+        /// <param name="salaireConjoint">Salaire du conjoint de la personne.</param>
         /// <param name="nbEnfants">Nombre d'enfants de la personne.</param>
-        /// <param name="conjoint">Conjoint de la personne.</param>
-        public Personne(SituationsFamiliales situationFamiliale, decimal salaireMensuel, int nbEnfants, Personne conjoint)
+        public Personne(SituationsFamiliales situationFamiliale, decimal salaireMensuel, decimal salaireConjoint, int nbEnfants)
         {
             this.situationFamiliale = situationFamiliale;
             this.salaireMensuel = salaireMensuel;
+            this.salaireConjoint = salaireConjoint;
             this.nbEnfants = nbEnfants;
-            this.conjoint = conjoint;
         }
     }
 }
