@@ -8,6 +8,8 @@
         /// <summary>
         /// Initialise une nouvelle instance de la classe <see cref="SituationFamilialeInconnueException"/>.
         /// </summary>
-        public SituationFamilialeInconnueException() : base(Ressources._string.familleErreur);
+        public SituationFamilialeInconnueException() : base(Ressources._string.familleErreur)
+        {
+        }
     }
 }

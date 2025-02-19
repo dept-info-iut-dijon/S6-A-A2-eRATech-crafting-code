@@ -8,6 +8,9 @@
         /// <summary>
         /// Initialise une nouvelle instance de la classe <see cref="EnfantNegatifException"/>.
         /// </summary>
-        public EnfantNegatifException() : base(Ressources._string.EnfantNegatifErreur);
+        public EnfantNegatifException() : base(Ressources._string.EnfantNegatifErreur)
+        {
+            
+        }
     }
 }

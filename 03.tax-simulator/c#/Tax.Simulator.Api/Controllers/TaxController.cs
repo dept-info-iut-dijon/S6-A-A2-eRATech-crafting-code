@@ -37,7 +37,7 @@ namespace Tax.Simulator.Api.Controllers
 
         private void VerifierPersonne(Personne personne)
         {
-            if (personne.SituationFamiliale is not SituationsFamiliales.CELIBATAIRE or is not SituationsFamiliales.MARIE_PACSE)
+            if (personne.SituationFamiliale != SituationsFamiliales.CELIBATAIRE || personne.SituationFamiliale != SituationsFamiliales.MARIE_PACSE)
             {
                 throw new SituationFamilialeInconnueException();
             }
@@ -52,7 +52,7 @@ namespace Tax.Simulator.Api.Controllers
                 throw new SalaireNegatifException();
             }
 
-            if (personne.nbEnfants < 0)
+            if (personne.NbEnfants < 0)
             {
                 throw new EnfantNegatifException();
             }

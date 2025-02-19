@@ -8,6 +8,8 @@
         /// <summary>
         /// Initialise une nouvelle instance de la classe <see cref="SalaireNegatifException"/>.
         /// </summary>
-        public SalaireNegatifException() : base(Ressources._string.SalairePositifErreur);
+        public SalaireNegatifException() : base(Ressources._string.SalairePositifErreur)
+        {
+        }
     }
 }
