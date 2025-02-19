@@ -14,4 +14,8 @@
         <None Remove="Post\"/>
         <None Remove="Rental\"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Tax.Simulator.Entities\Tax.Simulator.Entities.csproj" />
+    </ItemGroup>
 </Project>

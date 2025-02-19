@@ -1,3 +1,5 @@
+using Tax.Simulator.Entities;
+
 namespace Tax.Simulator;
 
 public static class Simulateur
@@ -92,5 +94,11 @@ public static class Simulateur
             2 => QUOTIENT_2_ENFANT,
             _ => QUOTIENT_2_ENFANT + (nombreEnfants - 2) * QUOTIENT_1_ENFANT
         };
+    }
+
+    public static double CalculerImpotsAnnuelPersonne(Personne personne)
+    {
+        return (double) CalculerImpotsAnnuel(personne.SituationFamiliale.ToString(), personne.SalaireMensuel,
+            personne.SalaireConjoint, personne.NbEnfants);
     }
 }
