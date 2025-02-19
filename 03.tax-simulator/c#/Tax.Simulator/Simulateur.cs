@@ -1,5 +1,8 @@
 namespace Tax.Simulator;
 
+/// <summary>
+/// Simulateur de taxe
+/// </summary>
 public static class Simulateur
 {
     private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m }; // Plafonds des tranches
@@ -10,6 +13,14 @@ public static class Simulateur
     private const decimal QUOTIENT_2_ENFANT = 1.0m;
     
     
+    /// <summary>
+    /// Calcul l'impot annuel selon la situation familliale
+    /// </summary>
+    /// <param name="situationFamiliale">Situation familiale actuelle</param>
+    /// <param name="salaireMensuel">salaire mensuel de l'imposé</param>
+    /// <param name="salaireMensuelConjoint">salaire mensuel du conjoint de l'imposé</param>
+    /// <param name="nombreEnfants">nombre d'enfant de l'imposé</param>
+    /// <returns>taux d'imposition</returns>
     public static decimal CalculerImpotsAnnuel(
         string situationFamiliale,
         decimal salaireMensuel,
