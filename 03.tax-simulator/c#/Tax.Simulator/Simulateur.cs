@@ -9,56 +9,71 @@ public static class Simulateur
 {
     private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m }; // Plafonds des tranches
     private static readonly decimal[] TauxImposition = { 0.0m, 0.11m, 0.30m, 0.41m, 0.45m }; // Taux correspondants
+
     private const int NOMBRE_MOIS_ANNEE = 12;
     private const decimal QUOTIENT_0_ENFANT = 0m;
     private const decimal QUOTIENT_1_ENFANT = 0.5m;
     private const decimal QUOTIENT_2_ENFANT = 1.0m;
-    
-    
+
     /// <summary>
-    /// Calcul l'impot annuel selon la situation familliale
+    /// Calcul l'impot annuel selon la situation familiale
     /// </summary>
-    /// <param name="situationFamiliale">Situation familiale actuelle</param>
-    /// <param name="salaireMensuel">salaire mensuel de l'imposé</param>
-    /// <param name="salaireMensuelConjoint">salaire mensuel du conjoint de l'imposé</param>
-    /// <param name="nombreEnfants">nombre d'enfant de l'imposé</param>
-    /// <returns>taux d'imposition</returns>
-    public static decimal CalculerImpotsAnnuel(
-        string situationFamiliale,
-        decimal salaireMensuel,
-        decimal salaireMensuelConjoint,
-        int nombreEnfants)
+    /// <param name="personne">Personne dont on calcule l'impot annuel</param>
+    public static decimal CalculerImpotsAnnuelPersonne(Personne personne)
     {
-        decimal revenuAnnuel;
-        if (situationFamiliale == "Marié/Pacsé")
-        {
-            revenuAnnuel = (salaireMensuel + salaireMensuelConjoint) * NOMBRE_MOIS_ANNEE;
-        }
-        else
-        {
-            revenuAnnuel = salaireMensuel * NOMBRE_MOIS_ANNEE;
-        }
+        decimal revenuMensuel =
+            CalculerRevenuMensuelSelonSituationFamiliale(personne);
 
-        var baseQuotient = situationFamiliale == "Marié/Pacsé" ? 2 : 1;
-        
-        decimal quotientEnfants = CalculerQuotientEnfants(nombreEnfants);
+        decimal revenuAnnuel = revenuMensuel * NOMBRE_MOIS_ANNEE;
 
+        var baseQuotient = (int)personne.SituationFamiliale;
+
+        decimal quotientEnfants = CalculerQuotientEnfants(personne.NbEnfants);
 
         var partsFiscales = baseQuotient + quotientEnfants;
         var revenuImposableParPart = revenuAnnuel / partsFiscales;
 
+        decimal impot = CalculerImpotSelonTranchesImposition(revenuImposableParPart);
+
+        return Math.Round(impot * partsFiscales, 2);
+    }
+
+    /// <summary>
+    /// Calcule le revenu mensuel en fonction de la situation familiale.
+    /// </summary>
+    /// <param name="person">Personne dont on calcule le revenu mensuel</param>
+    /// <returns>Le revenu mensuel selon une situation familiale</returns>
+    private static decimal CalculerRevenuMensuelSelonSituationFamiliale(
+        Personne person)
+    {
+        return person.SituationFamiliale switch
+        {
+            SituationsFamiliales.CELIBATAIRE => person.SalaireMensuel,
+            SituationsFamiliales.MARIE_PACSE => person.SalaireMensuel + person.SalaireConjoint,
+        };
+    }
+
+    /// <summary>
+    /// Calcule l'impôt en fonction des tranches d'impositions.
+    /// </summary>
+    /// <param name="revenuImposableParPart">Revenu imposable par part.</param>
+    /// <returns>Le total d'impot selon les tranches d'impositions existantes.</returns>
+    private static decimal CalculerImpotSelonTranchesImposition(decimal revenuImposableParPart)
+    {
         decimal impot = 0;
+        decimal val;
+
         for (var i = 0; i < TranchesImposition.Length; i++)
         {
+            val = i > 0 ? TranchesImposition[i - 1] : 0;
+
             if (revenuImposableParPart <= TranchesImposition[i])
             {
-                impot += (revenuImposableParPart - (i > 0 ? TranchesImposition[i - 1] : 0)) * TauxImposition[i];
+                impot += (revenuImposableParPart - val) * TauxImposition[i];
                 break;
             }
-            else
-            {
-                impot += (TranchesImposition[i] - (i > 0 ? TranchesImposition[i - 1] : 0)) * TauxImposition[i];
-            }
+
+            impot += (TranchesImposition[i] - val) * TauxImposition[i];
         }
 
         if (revenuImposableParPart > TranchesImposition[^1])
@@ -66,9 +81,7 @@ public static class Simulateur
             impot += (revenuImposableParPart - TranchesImposition[^1]) * TauxImposition[^1];
         }
 
-        var impotParPart = impot;
-
-        return Math.Round(impotParPart * partsFiscales, 2);
+        return impot;
     }
 
     /// <summary>
@@ -85,11 +98,5 @@ public static class Simulateur
             2 => QUOTIENT_2_ENFANT,
             _ => QUOTIENT_2_ENFANT + (nombreEnfants - 2) * QUOTIENT_1_ENFANT
         };
-    }
-
-    public static double CalculerImpotsAnnuelPersonne(Personne personne)
-    {
-        return (double) CalculerImpotsAnnuel(personne.SituationFamiliale.ToString(), personne.SalaireMensuel,
-            personne.SalaireConjoint, personne.NbEnfants);
     }
 }

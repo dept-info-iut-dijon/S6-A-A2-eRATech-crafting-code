@@ -1,4 +1,3 @@
-using Tax.Simulator;
 using Tax.Simulator.Api;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -18,7 +18,7 @@ public class SimulateurShould
     {
         // Arrange
         var personne = new Personne(SituationsFamiliales.CELIBATAIRE, 20000, 0, 0 );
-        var expectedResult = 87308.86;
+        var expectedResult = 87308.56m;
         // Act
         var result = Simulateur.CalculerImpotsAnnuelPersonne(personne);
         // Assert
@@ -40,7 +40,7 @@ public class SimulateurShould
     {
         // Arrange
         var personne = new Personne(SituationsFamiliales.CELIBATAIRE, 45000, 0, 0 );
-        var expectedResult = 223508.56;
+        var expectedResult = 222308.56m;
         // Act
         var result = Simulateur.CalculerImpotsAnnuelPersonne(personne);
         // Assert
@@ -63,7 +63,7 @@ public class SimulateurShould
     {
         // Arrange
         var personne = new Personne(SituationsFamiliales.MARIE_PACSE, 30000, 25000, 2 );
-        var expectedResult = 234925.68;
+        var expectedResult = 234925.68m;
         // Act
         var result = Simulateur.CalculerImpotsAnnuelPersonne(personne);
         // Assert

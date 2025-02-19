@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Tax.Simulator.Entities
+﻿namespace Tax.Simulator.Entities
 {
     /// <summary>
     /// Classe pour une personne.
@@ -39,7 +33,7 @@ namespace Tax.Simulator.Entities
         /// <summary>
         /// Initialise une nouvelle instance de la classe <see cref="Personne"/>.
         /// </summary>
-        /// <param name="situationFamiliale">Situation familialle de la personne.</param>
+        /// <param name="situationFamiliale">Situation familliale de la personne.</param>
         /// <param name="salaireMensuel">Salaire mensuel de la personne.</param>
         /// <param name="salaireConjoint">Salaire du conjoint de la personne.</param>
         /// <param name="nbEnfants">Nombre d'enfants de la personne.</param>
