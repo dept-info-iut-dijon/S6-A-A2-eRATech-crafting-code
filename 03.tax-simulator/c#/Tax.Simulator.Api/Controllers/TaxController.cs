@@ -29,7 +29,7 @@ namespace Tax.Simulator.Api.Controllers
                     Simulateur.CalculerImpotsAnnuelPersonne(personne)
                 );
             }
-            catch (ArgumentException ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -37,7 +37,7 @@ namespace Tax.Simulator.Api.Controllers
 
         private void VerifierPersonne(Personne personne)
         {
-            if (personne.SituationFamiliale != SituationsFamiliales.CELIBATAIRE || personne.SituationFamiliale != SituationsFamiliales.MARIE_PACSE)
+            if (personne.SituationFamiliale != SituationsFamiliales.CELIBATAIRE && personne.SituationFamiliale != SituationsFamiliales.MARIE_PACSE)
             {
                 throw new SituationFamilialeInconnueException();
             }
@@ -47,7 +47,7 @@ namespace Tax.Simulator.Api.Controllers
                 throw new SalaireNegatifException();
             }
 
-            if (personne.SituationFamiliale is not SituationsFamiliales.MARIE_PACSE && personne.SalaireConjoint <= 0)
+            if (personne.SituationFamiliale == SituationsFamiliales.MARIE_PACSE && personne.SalaireConjoint < 0)
             {
                 throw new SalaireNegatifException();
             }
