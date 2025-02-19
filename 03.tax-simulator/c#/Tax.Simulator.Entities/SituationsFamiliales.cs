@@ -14,4 +14,20 @@ namespace Tax.Simulator.Entities
         MARIE_PACSE = 2,
         CELIBATAIRE = 1
     }
+    
+    public static class SituationsFamilialesExtensions
+    {
+        public static SituationsFamiliales StringToSituation(string situationFamiliale)
+        {
+            switch (situationFamiliale)
+            {
+                case "Marié/Pacsé":
+                    return SituationsFamiliales.MARIE_PACSE;
+                case "Célibataire":
+                    return SituationsFamiliales.CELIBATAIRE;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(situationFamiliale), situationFamiliale, null);
+            }
+        }
+    }
 }
