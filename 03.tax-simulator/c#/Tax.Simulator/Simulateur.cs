@@ -6,7 +6,12 @@ public static class Simulateur
 {
     private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m }; // Plafonds des tranches
     private static readonly decimal[] TauxImposition = { 0.0m, 0.11m, 0.30m, 0.41m, 0.45m }; // Taux correspondants
-
+    private const int NOMBRE_MOIS_ANNEE = 12;
+    private const decimal QUOTIENT_0_ENFANT = 0m;
+    private const decimal QUOTIENT_1_ENFANT = 0.5m;
+    private const decimal QUOTIENT_2_ENFANT = 1.0m;
+    
+    
     public static decimal CalculerImpotsAnnuel(
         string situationFamiliale,
         decimal salaireMensuel,
@@ -36,11 +41,11 @@ public static class Simulateur
         decimal revenuAnnuel;
         if (situationFamiliale == "Marié/Pacsé")
         {
-            revenuAnnuel = (salaireMensuel + salaireMensuelConjoint) * 12;
+            revenuAnnuel = (salaireMensuel + salaireMensuelConjoint) * NOMBRE_MOIS_ANNEE;
         }
         else
         {
-            revenuAnnuel = salaireMensuel * 12;
+            revenuAnnuel = salaireMensuel * NOMBRE_MOIS_ANNEE;
         }
 
         var baseQuotient = situationFamiliale == "Marié/Pacsé" ? 2 : 1;
@@ -84,10 +89,10 @@ public static class Simulateur
     {
         return nombreEnfants switch
         {
-            0 => 0,
-            1 => 0.5m,
-            2 => 1.0m,
-            _ => 1.0m + (nombreEnfants - 2) * 0.5m
+            0 => QUOTIENT_0_ENFANT,
+            1 => QUOTIENT_1_ENFANT,
+            2 => QUOTIENT_2_ENFANT,
+            _ => QUOTIENT_2_ENFANT + (nombreEnfants - 2) * QUOTIENT_1_ENFANT
         };
     }
 }
