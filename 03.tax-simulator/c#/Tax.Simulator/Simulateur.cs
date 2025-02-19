@@ -2,8 +2,8 @@ namespace Tax.Simulator;
 
 public static class Simulateur
 {
-    private static readonly decimal[] TranchesImposition = {10225m, 26070m, 74545m, 160336m}; // Plafonds des tranches
-    private static readonly decimal[] TauxImposition = {0.0m, 0.11m, 0.30m, 0.41m, 0.45m}; // Taux correspondants
+    private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m }; // Plafonds des tranches
+    private static readonly decimal[] TauxImposition = { 0.0m, 0.11m, 0.30m, 0.41m, 0.45m }; // Taux correspondants
 
     public static decimal CalculerImpotsAnnuel(
         string situationFamiliale,
@@ -42,24 +42,9 @@ public static class Simulateur
         }
 
         var baseQuotient = situationFamiliale == "Marié/Pacsé" ? 2 : 1;
-        decimal quotientEnfants = (decimal) Math.PI;
+        
+        decimal quotientEnfants = CalculerQuotientEnfants(nombreEnfants);
 
-        if (nombreEnfants == 0)
-        {
-            quotientEnfants = 0;
-        }
-        else if (nombreEnfants == 1)
-        {
-            quotientEnfants = 0.5m;
-        }
-        else if (nombreEnfants == 2)
-        {
-            quotientEnfants = 1.0m;
-        }
-        else
-        {
-            quotientEnfants = 1.0m + (nombreEnfants - 2) * 0.5m;
-        }
 
         var partsFiscales = baseQuotient + quotientEnfants;
         var revenuImposableParPart = revenuAnnuel / partsFiscales;
@@ -86,5 +71,21 @@ public static class Simulateur
         var impotParPart = impot;
 
         return Math.Round(impotParPart * partsFiscales, 2);
+    }
+
+    /// <summary>
+    /// Calcule le quotient familial en fonction du nombre d'enfants
+    /// </summary>
+    /// <param name="nombreEnfants">Nombre d'enfants de la personne.</param>
+    /// <returns>Le quotient familliale</returns>
+    private static decimal CalculerQuotientEnfants(int nombreEnfants)
+    {
+        return nombreEnfants switch
+        {
+            0 => 0,
+            1 => 0.5m,
+            2 => 1.0m,
+            _ => 1.0m + (nombreEnfants - 2) * 0.5m
+        };
     }
 }
