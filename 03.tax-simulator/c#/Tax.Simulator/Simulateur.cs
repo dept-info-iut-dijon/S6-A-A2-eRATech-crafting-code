@@ -7,8 +7,8 @@ namespace Tax.Simulator;
 /// </summary>
 public static class Simulateur
 {
-    private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m }; // Plafonds des tranches
-    private static readonly decimal[] TauxImposition = { 0.0m, 0.11m, 0.30m, 0.41m, 0.45m }; // Taux correspondants
+    private static readonly decimal[] TranchesImposition = { 10225m, 26070m, 74545m, 160336m, 500000m }; // Plafonds des tranches
+    private static readonly decimal[] TauxImposition = { 0.0m, 0.11m, 0.30m, 0.41m, 0.45m, 0.48m}; // Taux correspondants
 
     private const int NOMBRE_MOIS_ANNEE = 12;
     private const decimal QUOTIENT_0_ENFANT = 0m;
