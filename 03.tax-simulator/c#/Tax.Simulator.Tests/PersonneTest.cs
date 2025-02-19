@@ -36,7 +36,7 @@ namespace Tax.Simulator.Tests
         }
 
         [Fact]
-        public void SituationToStringTest()
+        public void StringToSituationTest()
         {
             SituationsFamilialesExtensions.StringToSituation("Marié/Pacsé")
                 .Should()
