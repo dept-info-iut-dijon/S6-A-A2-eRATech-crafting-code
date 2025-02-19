@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 namespace Tax.Simulator;
 
 public static class Simulateur
@@ -13,22 +15,22 @@ public static class Simulateur
     {
         if (situationFamiliale != "Célibataire" && situationFamiliale != "Marié/Pacsé")
         {
-            throw new ArgumentException("Situation familiale invalide.");
+            throw new ArgumentException(_string.familleErreur);
         }
 
         if (salaireMensuel <= 0)
         {
-            throw new ArgumentException("Les salaires doivent être positifs.");
+            throw new ArgumentException(_string.SalairePositifErreur);
         }
 
         if (situationFamiliale == "Marié/Pacsé" && salaireMensuelConjoint < 0)
         {
-            throw new InvalidDataException("Les salaires doivent être positifs.");
+            throw new InvalidDataException(_string.SalairePositifErreur);
         }
 
         if (nombreEnfants < 0)
         {
-            throw new ArgumentException("Le nombre d'enfants ne peut pas être négatif.");
+            throw new ArgumentException(_string.EnfantNegatifErreur);
         }
 
         decimal revenuAnnuel;

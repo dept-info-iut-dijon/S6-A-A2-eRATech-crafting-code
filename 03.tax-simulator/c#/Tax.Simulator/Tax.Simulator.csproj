@@ -8,10 +8,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Bank\"/>
-        <None Remove="LanguageExt.Core"/>
-        <None Remove="Math\"/>
-        <None Remove="Post\"/>
-        <None Remove="Rental\"/>
+        <None Remove="Bank\" />
+        <None Remove="LanguageExt.Core" />
+        <None Remove="Math\" />
+        <None Remove="Post\" />
+        <None Remove="Rental\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="string.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>string.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="string.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>string.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 </Project>
