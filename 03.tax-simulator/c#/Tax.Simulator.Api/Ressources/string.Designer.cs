@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Tax.Simulator {
+namespace Tax.Simulator.Api.Ressources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Tax.Simulator {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tax.Simulator.string", typeof(_string).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tax.Simulator.Api.Ressources.string", typeof(_string).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -18,26 +18,6 @@ public static class Simulateur
         decimal salaireMensuelConjoint,
         int nombreEnfants)
     {
-        if (situationFamiliale != "Célibataire" && situationFamiliale != "Marié/Pacsé")
-        {
-            throw new ArgumentException("Situation familiale invalide.");
-        }
-
-        if (salaireMensuel <= 0)
-        {
-            throw new ArgumentException("Les salaires doivent être positifs.");
-        }
-
-        if (situationFamiliale == "Marié/Pacsé" && salaireMensuelConjoint < 0)
-        {
-            throw new InvalidDataException("Les salaires doivent être positifs.");
-        }
-
-        if (nombreEnfants < 0)
-        {
-            throw new ArgumentException("Le nombre d'enfants ne peut pas être négatif.");
-        }
-
         decimal revenuAnnuel;
         if (situationFamiliale == "Marié/Pacsé")
         {
